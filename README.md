@@ -4,7 +4,7 @@ Default logic is a non-monotonic logic with default rules that extend incomplete
 
 ## Built With
 
-* [Tweety](http://www.tweetyproject.org/) - A comprehensive collection of Java libraries for logical aspects of artificial intelligence and knowledge representation
+* [Sat4j](http://www.sat4j.org) - Boolean satisfaction and optimization library
 * [Maven](https://maven.apache.org/) - Dependency Management
 
 ## License

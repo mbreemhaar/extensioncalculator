@@ -1,5 +1,9 @@
 package Model.PropositionalLogic;
 
+/**
+ * Represents a disjunction as in propositional logic. Connects two propositional formulas and is also a formula itself.
+ */
+
 public class Disjunction extends Formula {
     private Formula clause1;
     private Formula clause2;

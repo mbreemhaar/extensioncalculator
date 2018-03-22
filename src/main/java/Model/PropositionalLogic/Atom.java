@@ -1,14 +1,20 @@
 package Model.PropositionalLogic;
 
-public class Atom extends Formula {
-    private String name;
+/**
+ * Represents a propositional atom as in simple propositional logic. It is represented by a single character and can be
+ * a logical formula by itself.
+ */
 
-    public Atom(String name) {
+public class Atom extends Formula {
+
+    private Character name;
+
+    public Atom(Character name) {
         this.name = name;
     }
 
     @Override
     public String toString() {
-        return name;
+        return Character.toString(name);
     }
 }

@@ -1,5 +1,9 @@
 package Model.PropositionalLogic;
 
+/**
+ * Represents a negation as in propositional logic. It negates a single formula and also is a formula itself.
+ */
+
 public class Negation extends Formula {
     private Formula formula;
 

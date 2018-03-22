@@ -11,6 +11,6 @@ public class Conjunction extends Formula {
 
     @Override
     public String toString() {
-        return "(" + clause1 + " && " + clause2 + ")";
+        return "(" + clause1 + " & " + clause2 + ")";
     }
 }

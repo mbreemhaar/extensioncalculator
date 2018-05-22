@@ -1,6 +1,13 @@
 package Model.PropositionalLogic;
 
 
+import org.sat4j.core.Vec;
+import org.sat4j.core.VecInt;
+import org.sat4j.minisat.SolverFactory;
+import org.sat4j.minisat.core.Solver;
+import org.sat4j.specs.ContradictionException;
+import org.sat4j.specs.TimeoutException;
+
 import java.util.ArrayList;
 
 /**
@@ -8,9 +15,35 @@ import java.util.ArrayList;
  */
 
 public abstract class Formula {
+    public Boolean isSatisfiable() {
+        Vec<VecInt> problem = DimacsConverter.convert(this);
+
+        // Print the problem in dimacs format
+        for(int i = 0; i < problem.size(); i++) {
+            System.out.println("Clause " + i + ":");
+            System.out.println(problem.get(i));
+        }
+
+        Solver s = (Solver) SolverFactory.newDefault();
+        try {
+            s.addAllClauses(problem);
+        } catch (ContradictionException e) {
+            return false;
+        }
+
+        try {
+            return s.isSatisfiable();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public abstract Formula toCNF();
 
     public abstract ArrayList<Formula> getElements();
+
+    public abstract Integer getValue();
 
     @Override
     public abstract String toString();

@@ -12,8 +12,8 @@ public class Atom extends Formula {
 
     private Character name;
 
-    public Atom(Character name) {
-        this.name = name;
+    public Atom(String name) {
+        this.name = name.charAt(0);
     }
 
     @Override
@@ -31,5 +31,9 @@ public class Atom extends Formula {
     @Override
     public String toString() {
         return Character.toString(name);
+    }
+
+    public Integer getValue() {
+        return Character.getNumericValue(name);
     }
 }

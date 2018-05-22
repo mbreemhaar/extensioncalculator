@@ -32,4 +32,9 @@ public class Conjunction extends Formula {
     public String toString() {
         return "(" + clause1 + " & " + clause2 + ")";
     }
+
+    @Override
+    public Integer getValue() {
+        return null;
+    }
 }

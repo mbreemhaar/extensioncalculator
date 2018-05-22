@@ -39,4 +39,9 @@ public class Negation extends Formula {
     public String toString() {
         return "!(" + formula + ")";
     }
+
+    @Override
+    public Integer getValue() {
+        return formula.getValue() * -1;
+    }
 }

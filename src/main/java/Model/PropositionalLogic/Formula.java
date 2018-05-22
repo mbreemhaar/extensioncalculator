@@ -18,12 +18,6 @@ public abstract class Formula {
     public Boolean isSatisfiable() {
         Vec<VecInt> problem = DimacsConverter.convert(this);
 
-        // Print the problem in dimacs format
-        for(int i = 0; i < problem.size(); i++) {
-            System.out.println("Clause " + i + ":");
-            System.out.println(problem.get(i));
-        }
-
         Solver s = (Solver) SolverFactory.newDefault();
         try {
             s.addAllClauses(problem);

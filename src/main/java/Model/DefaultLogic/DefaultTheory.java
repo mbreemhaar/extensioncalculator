@@ -24,7 +24,15 @@ public class DefaultTheory {
         axioms.add(f);
     }
 
+    public void remove(Formula f) {
+        axioms.remove(f);
+    }
+
     public void add(Default d) {
         defaults.add(d);
+    }
+
+    public void remove(Default d) {
+        defaults.remove(d);
     }
 }

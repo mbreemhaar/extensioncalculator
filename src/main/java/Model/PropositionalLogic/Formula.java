@@ -17,6 +17,7 @@ import java.util.HashSet;
  */
 
 public abstract class Formula {
+
     public Boolean isSatisfiable() {
         Vec<VecInt> problem = DimacsConverter.convert(this);
 
@@ -37,12 +38,14 @@ public abstract class Formula {
 
     public Boolean isInSet(HashSet<Formula> setBase) {
         Formula neg = new Negation(this);
-        for(Formula f : setBase) {
-            if (!f.isConsistentWith(neg)) {
-                return true;
-            }
+
+        Formula set = new Conjunction(setBase);
+
+        if (set.isConsistentWith(neg)) {
+            return false;
+        } else {
+            return true;
         }
-        return false;
     }
 
     public Boolean isConsistentWith(Formula f) {
@@ -50,6 +53,7 @@ public abstract class Formula {
         return conj.isSatisfiable();
     }
 
+    //TODO Still checks for individual formula consistency but not for all together. See example in isInSet()
     public Boolean isConsistentWith(HashSet<Formula> set) {
         for(Formula f : set) {
             if (!f.isConsistentWith(this)) {

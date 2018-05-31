@@ -2,6 +2,7 @@ package Model.DefaultLogic;
 
 import Model.PropositionalLogic.Formula;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,8 +20,28 @@ public class Default {
         this.consequence = consequence;
     }
 
+    public Boolean isApplicable(HashSet<Formula> inSetBase) {
+        if (prerequisite.isInSet(inSetBase) && justification.isConsistentWith(inSetBase)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @Override
     public String toString() {
         return prerequisite + ", " + justification + " > " + consequence;
+    }
+
+    public Formula getPrerequisite() {
+        return prerequisite;
+    }
+
+    public Formula getJustification() {
+        return justification;
+    }
+
+    public Formula getConsequence() {
+        return consequence;
     }
 }

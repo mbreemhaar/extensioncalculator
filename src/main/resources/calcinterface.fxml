@@ -19,7 +19,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Theory">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Recalculate Extensions" />
+                  <MenuItem mnemonicParsing="false" onAction="#recalculate" text="Recalculate Extensions" />
                   <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" onAction="#addAxiom" text="Add Axiom" />
                   <MenuItem mnemonicParsing="false" text="Remove Axiom" />

@@ -37,6 +37,9 @@ public class MainController {
         new NewDefaultView();
     }
 
+    @FXML
+    private void recalculate() {Utility.theory.buildProcessTree(); }
+
     public void addToAxiomList(String s) {
         axiomListView.getItems().add(s);
     }

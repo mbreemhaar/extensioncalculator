@@ -1,5 +1,4 @@
 import Model.DefaultLogic.DefaultTheory;
-import Parser.FParser;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +12,8 @@ public class extensioncalculator extends Application {
     public static void main(String[] args) throws Exception {
         new DefaultTheory();
         launch(args);
+
+
     }
 
     @Override

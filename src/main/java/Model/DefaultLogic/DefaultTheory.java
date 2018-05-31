@@ -42,4 +42,10 @@ public class DefaultTheory {
     public HashSet<Default> getDefaults() {
         return defaults;
     }
+
+    public Extension buildProcessTree() {
+        Extension top = new Extension(defaults,axioms, new HashSet<>());
+        top.buildProcessTree();
+        return top;
+    }
 }

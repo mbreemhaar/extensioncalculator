@@ -10,6 +10,7 @@ import org.sat4j.specs.ContradictionException;
 import org.sat4j.specs.TimeoutException;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Represents a propositional formula. It can either be a conjunction, a disjunction, a negation or a propositional atom.
@@ -34,9 +35,28 @@ public abstract class Formula {
         return null;
     }
 
+    public Boolean isInSet(HashSet<Formula> setBase) {
+        Formula neg = new Negation(this);
+        for(Formula f : setBase) {
+            if (!f.isConsistentWith(neg)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Boolean isConsistentWith(Formula f) {
         Formula conj = new Conjunction(this,f);
         return conj.isSatisfiable();
+    }
+
+    public Boolean isConsistentWith(HashSet<Formula> set) {
+        for(Formula f : set) {
+            if (!f.isConsistentWith(this)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public abstract Boolean isValid();

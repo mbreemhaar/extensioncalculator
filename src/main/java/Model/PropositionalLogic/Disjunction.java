@@ -24,6 +24,15 @@ public class Disjunction extends Formula {
     }
 
     @Override
+    public Boolean isValid() {
+        if (clause1 != null && clause2 != null) {
+            return clause1.isValid() && clause2.isValid();
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     public Formula toCNF() {
         Formula c1 = clause1.toCNF();
         Formula c2 = clause2.toCNF();

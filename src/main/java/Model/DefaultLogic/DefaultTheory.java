@@ -1,23 +1,22 @@
 package Model.DefaultLogic;
 
 import Model.PropositionalLogic.Formula;
+import Utility.Utility;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.HashSet;
-import java.util.Observable;
-import java.util.Set;
 
 /**
  * A default theory consists of a finite set of axioms and a finite set of defaults.
  */
 
 public class DefaultTheory {
-    private Set<Formula> axioms = new HashSet<>();
-    private Set<Default> defaults = new HashSet<>();
-
-    public static DefaultTheory currentTheory;
+    private HashSet<Formula> axioms = new HashSet<>();
+    private HashSet<Default> defaults = new HashSet<>();
 
     public DefaultTheory() {
-        currentTheory = this;
+        Utility.theory = this;
     }
 
     public void add(Formula f) {
@@ -34,5 +33,13 @@ public class DefaultTheory {
 
     public void remove(Default d) {
         defaults.remove(d);
+    }
+
+    public HashSet<Formula> getAxioms() {
+        return axioms;
+    }
+
+    public HashSet<Default> getDefaults() {
+        return defaults;
     }
 }

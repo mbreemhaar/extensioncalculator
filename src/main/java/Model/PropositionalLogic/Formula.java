@@ -1,6 +1,7 @@
 package Model.PropositionalLogic;
 
 
+import javafx.collections.ObservableArray;
 import org.sat4j.core.Vec;
 import org.sat4j.core.VecInt;
 import org.sat4j.minisat.SolverFactory;
@@ -32,6 +33,13 @@ public abstract class Formula {
         }
         return null;
     }
+
+    public Boolean isConsistentWith(Formula f) {
+        Formula conj = new Conjunction(this,f);
+        return conj.isSatisfiable();
+    }
+
+    public abstract Boolean isValid();
 
     public abstract Formula toCNF();
 

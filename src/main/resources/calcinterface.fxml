@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="New Default Theory" />
+                  <MenuItem mnemonicParsing="false" text="Open..." />
+                  <MenuItem mnemonicParsing="false" text="Save..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Theory">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Recalculate Extensions" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#addAxiom" text="Add Axiom" />
+                  <MenuItem mnemonicParsing="false" text="Remove Axiom" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Add Default" />
+                  <MenuItem mnemonicParsing="false" text="Remove Default" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Settings">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Preferences..." />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <right>
+      <VBox prefHeight="371.0" prefWidth="139.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Axioms" />
+            <ListView fx:id="axiomListView" />
+            <Label layoutX="10.0" layoutY="364.0" text="Defaults" />
+            <ListView fx:id="defaultListView" layoutX="10.0" layoutY="10.0" />
+         </children>
+      </VBox>
+   </right>
+   <bottom>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Default Logic Extension Calculator v0.1" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

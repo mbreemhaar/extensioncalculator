@@ -21,6 +21,11 @@ public class Negation extends Formula {
     }
 
     @Override
+    public Boolean isValid() {
+        return (formula != null && formula.isValid());
+    }
+
+    @Override
     public Formula toCNF() {
         if (formula.getClass() == Negation.class) {
             return formula.getElements().get(0).toCNF();

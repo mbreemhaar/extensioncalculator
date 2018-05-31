@@ -24,6 +24,11 @@ public class Atom extends Formula {
     }
 
     @Override
+    public Boolean isValid() {
+        return name != null;
+    }
+
+    @Override
     public Formula toCNF() {
         return this;
     }

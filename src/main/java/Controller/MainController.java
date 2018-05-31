@@ -5,6 +5,7 @@ import Model.PropositionalLogic.Formula;
 import Parser.FParser;
 import Utility.Utility;
 import View.NewAxiomView;
+import View.NewDefaultView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -29,6 +30,11 @@ public class MainController {
     @FXML
     private void addAxiom() {
         new NewAxiomView();
+    }
+
+    @FXML
+    private void addDefault() {
+        new NewDefaultView();
     }
 
     public void addToAxiomList(String s) {

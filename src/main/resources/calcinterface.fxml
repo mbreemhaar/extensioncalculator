@@ -24,7 +24,7 @@
               <MenuItem mnemonicParsing="false" onAction="#addAxiom" text="Add Axiom" />
                   <MenuItem mnemonicParsing="false" text="Remove Axiom" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Add Default" />
+                  <MenuItem mnemonicParsing="false" onAction="#addDefault" text="Add Default" />
                   <MenuItem mnemonicParsing="false" text="Remove Default" />
             </items>
           </Menu>

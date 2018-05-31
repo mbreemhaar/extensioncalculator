@@ -10,6 +10,17 @@ import java.util.Set;
 
 public class Default {
     private Formula prerequisite;
-    private Set<Formula> justifications;
+    private Formula justification;
     private Formula consequence;
+
+    public Default(Formula prerequisite, Formula justification, Formula consequence) {
+        this.prerequisite = prerequisite;
+        this.justification = justification;
+        this.consequence = consequence;
+    }
+
+    @Override
+    public String toString() {
+        return prerequisite + ", " + justification + " > " + consequence;
+    }
 }

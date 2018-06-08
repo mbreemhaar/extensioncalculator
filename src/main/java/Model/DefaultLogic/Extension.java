@@ -7,10 +7,12 @@ import java.util.HashSet;
 
 public class Extension {
 
-    private HashSet<Default> defaults = new HashSet<>();
-    private HashSet<Formula> inSetBase = new HashSet<>();
-    private HashSet<Formula> outSetBase = new HashSet<>();
+    private HashSet<Default> defaults;
+    private HashSet<Formula> inSetBase;
+    private HashSet<Formula> outSetBase;
     private HashSet<Extension> children = new HashSet<>();
+
+    private Default appliedDefault = null;
 
     public Extension(HashSet<Default> defaults, HashSet<Formula> inSetBase, HashSet<Formula> outSetBase) {
         this.defaults = defaults;
@@ -30,7 +32,9 @@ public class Extension {
         HashSet<Formula> newOutSetBase = (HashSet<Formula>)outSetBase.clone();
         newOutSetBase.add(new Negation(d.getJustification()));
 
-        children.add(new Extension(newDefaults,newInSetBase,newOutSetBase));
+        Extension newExtension = new Extension(newDefaults,newInSetBase,newOutSetBase);
+        newExtension.appliedDefault = d;
+        children.add(newExtension);
     }
 
     public void applyAllDefaults() {
@@ -57,6 +61,14 @@ public class Extension {
 
     @Override
     public String toString() {
-        return inSetBase.toString() + "\n" + children.toString();
+        if (appliedDefault != null) {
+            return appliedDefault.toString() + "\n" + inSetBase.toString();
+        } else {
+            return inSetBase.toString();
+        }
+    }
+
+    public HashSet<Extension> getChildren() {
+        return children;
     }
 }

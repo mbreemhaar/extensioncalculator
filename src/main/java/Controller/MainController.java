@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.DefaultLogic.DefaultTheory;
+import Model.DefaultLogic.Extension;
 import Model.PropositionalLogic.Formula;
 import Parser.FParser;
 import Utility.Utility;
@@ -10,9 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 
 import java.util.Optional;
 
@@ -21,6 +20,9 @@ public class MainController {
     public void initialize() {
         Utility.mainController = this;
     }
+
+    @FXML
+    private TreeView<Extension> processTreeView;
 
     @FXML
     private ListView<String> axiomListView;
@@ -38,7 +40,27 @@ public class MainController {
     }
 
     @FXML
-    private void recalculate() {Utility.theory.buildProcessTree(); }
+    private void recalculate() {
+        Extension root = Utility.theory.buildProcessTree();
+        TreeItem<Extension> viewRoot = buildTreeView(root,null);
+        processTreeView.setRoot(viewRoot);
+    }
+
+    private TreeItem<Extension> buildTreeView(Extension extension, TreeItem<Extension> parent) {
+        TreeItem<Extension> item = new TreeItem<Extension>(extension);
+
+        for(Extension child : extension.getChildren()) {
+            buildTreeView(child,item);
+        }
+
+        if (parent != null) {
+            parent.getChildren().add(item);
+        }
+
+        return item;
+
+
+    }
 
     public void addToAxiomList(String s) {
         axiomListView.getItems().add(s);

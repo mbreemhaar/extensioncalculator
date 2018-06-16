@@ -62,4 +62,11 @@
    <left>
       <TreeView fx:id="processTreeView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </left>
+   <center>
+      <VBox>
+         <children>
+            <Label fx:id="detailsLabel" text="Label" BorderPane.alignment="CENTER" />
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

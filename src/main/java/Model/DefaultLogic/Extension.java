@@ -71,4 +71,9 @@ public class Extension {
     public HashSet<Extension> getChildren() {
         return children;
     }
+
+    public String getDetailsString() {
+        //TODO: Generate string with details like Successful, Process, Closed, In- and Outset...
+        return toString();
+    }
 }

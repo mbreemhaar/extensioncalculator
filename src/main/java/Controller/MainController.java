@@ -19,8 +19,11 @@ public class MainController {
 
     public void initialize() {
         Utility.mainController = this;
+        processTreeView.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> detailsLabel.setText(newValue.getValue().getDetailsString()) );
     }
 
+    @FXML
+    private Label detailsLabel;
     @FXML
     private TreeView<Extension> processTreeView;
 
@@ -48,6 +51,7 @@ public class MainController {
 
     private TreeItem<Extension> buildTreeView(Extension extension, TreeItem<Extension> parent) {
         TreeItem<Extension> item = new TreeItem<Extension>(extension);
+        item.setExpanded(true);
 
         for(Extension child : extension.getChildren()) {
             buildTreeView(child,item);

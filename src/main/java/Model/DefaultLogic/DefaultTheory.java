@@ -5,6 +5,7 @@ import Utility.Utility;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -44,7 +45,7 @@ public class DefaultTheory {
     }
 
     public Extension buildProcessTree() {
-        Extension top = new Extension(defaults,axioms, new HashSet<>());
+        Extension top = new Extension(defaults,axioms, new HashSet<>(), new ArrayList<>());
         top.buildProcessTree();
         return top;
     }

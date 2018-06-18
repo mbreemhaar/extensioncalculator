@@ -3,27 +3,28 @@ package Model.DefaultLogic;
 import Model.PropositionalLogic.Formula;
 import Model.PropositionalLogic.Negation;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Extension {
 
-    private HashSet<Default> defaults;
+    private HashSet<Default> remainingDefaults;
     private HashSet<Formula> inSetBase;
     private HashSet<Formula> outSetBase;
     private HashSet<Extension> children = new HashSet<>();
+    private ArrayList<Default> process = new ArrayList<>();
 
-    private Default appliedDefault = null;
-
-    public Extension(HashSet<Default> defaults, HashSet<Formula> inSetBase, HashSet<Formula> outSetBase) {
-        this.defaults = defaults;
+    public Extension(HashSet<Default> remainingDefaults, HashSet<Formula> inSetBase, HashSet<Formula> outSetBase, ArrayList<Default> process) {
+        this.remainingDefaults = remainingDefaults;
         this.inSetBase = inSetBase;
         this.outSetBase = outSetBase;
+        this.process = process;
     }
 
     private void applyDefault(Default d) {
         assert(d.isApplicable(inSetBase));
 
-        HashSet<Default> newDefaults = (HashSet<Default>) defaults.clone();
+        HashSet<Default> newDefaults = (HashSet<Default>) remainingDefaults.clone();
         newDefaults.remove(d);
 
         HashSet<Formula> newInSetBase = (HashSet<Formula>)inSetBase.clone();
@@ -32,13 +33,15 @@ public class Extension {
         HashSet<Formula> newOutSetBase = (HashSet<Formula>)outSetBase.clone();
         newOutSetBase.add(new Negation(d.getJustification()));
 
-        Extension newExtension = new Extension(newDefaults,newInSetBase,newOutSetBase);
-        newExtension.appliedDefault = d;
+        ArrayList<Default> newProcess = (ArrayList<Default>)process.clone();
+        newProcess.add(d);
+
+        Extension newExtension = new Extension(newDefaults,newInSetBase,newOutSetBase,newProcess);
         children.add(newExtension);
     }
 
     public void applyAllDefaults() {
-        for(Default d : defaults) {
+        for(Default d : remainingDefaults) {
             if(d.isApplicable(inSetBase)) {
                 applyDefault(d);
             }
@@ -59,10 +62,19 @@ public class Extension {
         }
     }
 
+    public boolean isComplete() {
+        for(Default d : remainingDefaults) {
+            if (d.isApplicable(inSetBase)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
-        if (appliedDefault != null) {
-            return appliedDefault.toString() + "\n" + inSetBase.toString();
+        if (process.size() != 0) {
+            return process.get(process.size()-1).toString() + "\n" + inSetBase.toString();
         } else {
             return inSetBase.toString();
         }
@@ -73,7 +85,15 @@ public class Extension {
     }
 
     public String getDetailsString() {
-        //TODO: Generate string with details like Successful, Process, Closed, In- and Outset...
-        return toString();
+        StringBuilder s = new StringBuilder();
+        s.append("Process: " + process + "\n");
+        if (isComplete()) {
+            s.append("Complete: yes\n");
+        } else {
+            s.append("Complete: no\n");
+        }
+        s.append("In-set: " + inSetBase + "\n");
+        s.append("Out-set: " + outSetBase + "\n");
+        return s.toString();
     }
 }

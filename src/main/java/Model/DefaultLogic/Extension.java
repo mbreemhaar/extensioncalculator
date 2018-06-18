@@ -51,12 +51,6 @@ public class Extension {
     protected void buildProcessTree() {
         applyAllDefaults();
 
-        if (children.size() == 0) {
-            System.out.println(inSetBase);
-        } else {
-            System.out.println(children.size());
-        }
-
         for (Extension c : children) {
             c.buildProcessTree();
         }

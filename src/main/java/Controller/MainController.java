@@ -19,7 +19,6 @@ public class MainController {
 
     public void initialize() {
         Utility.mainController = this;
-        processTreeView.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> detailsLabel.setText(newValue.getValue().getDetailsString()) );
     }
 
     @FXML
@@ -47,6 +46,8 @@ public class MainController {
         Extension root = Utility.theory.buildProcessTree();
         TreeItem<Extension> viewRoot = buildTreeView(root,null);
         processTreeView.setRoot(viewRoot);
+        processTreeView.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> detailsLabel.setText(newValue.getValue().getDetailsString()) );
+
     }
 
     private TreeItem<Extension> buildTreeView(Extension extension, TreeItem<Extension> parent) {

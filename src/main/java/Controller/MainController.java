@@ -37,9 +37,17 @@ public class MainController {
         new NewAxiomView();
     }
 
+    @FXML private void removeAxiom() {
+        axiomListView.getItems().remove(axiomListView.getSelectionModel().getSelectedItem());
+    }
+
     @FXML
     private void addDefault() {
         new NewDefaultView();
+    }
+
+    @FXML private void removeDefault() {
+        defaultListView.getItems().remove(defaultListView.getSelectionModel().getSelectedItem());
     }
 
     @FXML

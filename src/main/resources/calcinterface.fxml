@@ -23,10 +23,10 @@
                   <MenuItem mnemonicParsing="false" onAction="#recalculate" text="Recalculate Extensions" />
                   <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" onAction="#addAxiom" text="Add Axiom" />
-                  <MenuItem mnemonicParsing="false" text="Remove Axiom" />
+                  <MenuItem mnemonicParsing="false" onAction="#removeAxiom" text="Remove Axiom" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#addDefault" text="Add Default" />
-                  <MenuItem mnemonicParsing="false" text="Remove Default" />
+                  <MenuItem mnemonicParsing="false" onAction="#removeDefault" text="Remove Default" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Settings">

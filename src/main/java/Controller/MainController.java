@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.DefaultLogic.Default;
 import Model.DefaultLogic.DefaultTheory;
 import Model.DefaultLogic.Extension;
 import Model.PropositionalLogic.Formula;
@@ -27,9 +28,9 @@ public class MainController {
     private TreeView<Extension> processTreeView;
 
     @FXML
-    private ListView<String> axiomListView;
+    private ListView<Formula> axiomListView;
     @FXML
-    private ListView<String> defaultListView;
+    private ListView<Default> defaultListView;
 
     @FXML
     private void addAxiom() {
@@ -67,12 +68,12 @@ public class MainController {
 
     }
 
-    public void addToAxiomList(String s) {
-        axiomListView.getItems().add(s);
+    public ObservableList<Formula> getAxiomList() {
+        return axiomListView.getItems();
     }
 
-    public void addToDefaultList(String s) {
-        defaultListView.getItems().add(s);
+    public ObservableList<Default> getDefaultList() {
+        return defaultListView.getItems();
     }
 
 }

@@ -30,7 +30,6 @@ public class NewDefaultController {
         if (prereq != null && prereq.isValid() && just != null && just.isValid() && cons != null && cons.isValid()) {
             Default d = new Default(prereq,just,cons);
             Utility.theory.add(d);
-            Utility.mainController.addToDefaultList(d.toString());
             this.close();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

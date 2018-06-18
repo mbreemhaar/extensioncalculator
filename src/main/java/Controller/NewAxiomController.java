@@ -23,7 +23,6 @@ public class NewAxiomController {
         Formula f = FParser.parse(s);
 
         if (f != null) {
-            Utility.mainController.addToAxiomList(s);
             Utility.theory.add(f);
             this.close();
         } else {

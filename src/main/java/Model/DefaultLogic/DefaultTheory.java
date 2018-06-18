@@ -3,6 +3,7 @@ package Model.DefaultLogic;
 import Model.PropositionalLogic.Formula;
 import Utility.Utility;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
@@ -13,8 +14,8 @@ import java.util.HashSet;
  */
 
 public class DefaultTheory {
-    private HashSet<Formula> axioms = new HashSet<>();
-    private HashSet<Default> defaults = new HashSet<>();
+    private ObservableList<Formula> axioms = Utility.mainController.getAxiomList();
+    private ObservableList<Default> defaults = Utility.mainController.getDefaultList();
 
     public DefaultTheory() {
         Utility.theory = this;
@@ -36,16 +37,8 @@ public class DefaultTheory {
         defaults.remove(d);
     }
 
-    public HashSet<Formula> getAxioms() {
-        return axioms;
-    }
-
-    public HashSet<Default> getDefaults() {
-        return defaults;
-    }
-
     public Extension buildProcessTree() {
-        Extension top = new Extension(defaults,axioms, new HashSet<>(), new ArrayList<>());
+        Extension top = new Extension(new HashSet<>(new ArrayList<>(defaults)), new HashSet<>(new ArrayList<>(axioms)), new HashSet<>(), new ArrayList<>());
         top.buildProcessTree();
         return top;
     }

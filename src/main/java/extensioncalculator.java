@@ -10,10 +10,7 @@ import java.io.IOException;
 public class extensioncalculator extends Application {
 
     public static void main(String[] args) throws Exception {
-        new DefaultTheory();
         launch(args);
-
-
     }
 
     @Override
@@ -21,6 +18,7 @@ public class extensioncalculator extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("calcinterface.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Default Logic Extension Calculator");
+        new DefaultTheory();
         primaryStage.show();
     }
 }

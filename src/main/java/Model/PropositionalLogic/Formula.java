@@ -36,7 +36,16 @@ public abstract class Formula {
         return null;
     }
 
+    public Boolean isTautology() {
+        Negation n = new Negation(this);
+        return !n.isSatisfiable();
+    }
+
     public Boolean isInSet(HashSet<Formula> setBase) {
+        if (setBase.isEmpty()) {
+            return false;
+        }
+
         Formula neg = new Negation(this);
 
         Formula set = new Conjunction(setBase);

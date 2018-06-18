@@ -23,9 +23,7 @@ public class Default {
     public Boolean isApplicable(HashSet<Formula> inSetBase) {
         if (prerequisite.isInSet(inSetBase) && justification.isConsistentWith(inSetBase)) {
             return true;
-        } else {
-            return false;
-        }
+        } else return false;
     }
 
     @Override

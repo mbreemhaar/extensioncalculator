@@ -65,7 +65,7 @@
    <center>
       <VBox>
          <children>
-            <Label fx:id="detailsLabel" text="Label" BorderPane.alignment="CENTER" />
+            <Label fx:id="detailsLabel" BorderPane.alignment="CENTER" />
          </children>
       </VBox>
    </center>

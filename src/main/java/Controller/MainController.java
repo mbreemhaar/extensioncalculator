@@ -55,7 +55,13 @@ public class MainController {
         Extension root = Utility.theory.buildProcessTree();
         TreeItem<Extension> viewRoot = buildTreeView(root,null);
         processTreeView.setRoot(viewRoot);
-        processTreeView.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> detailsLabel.setText(newValue.getValue().getDetailsString()) );
+        processTreeView.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> {
+            if (newValue != null) {
+                detailsLabel.setText(newValue.getValue().getDetailsString());
+            } else {
+                detailsLabel.setText("");
+            }
+        } );
 
     }
 

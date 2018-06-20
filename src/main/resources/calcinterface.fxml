@@ -12,15 +12,33 @@
         <menus>
           <Menu mnemonicParsing="false" text="Theory">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#recalculate" text="Recalculate Extensions" />
+                  <MenuItem mnemonicParsing="false" onAction="#recalculate" text="Recalculate Extensions">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="R" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#clear" text="Clear" />
+                  <MenuItem mnemonicParsing="false" onAction="#clear" text="Clear">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="C" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-              <MenuItem mnemonicParsing="false" onAction="#addAxiom" text="Add Axiom" />
-                  <MenuItem mnemonicParsing="false" onAction="#removeAxiom" text="Remove Axiom" />
+              <MenuItem mnemonicParsing="false" onAction="#addAxiom" text="Add Axiom">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="A" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#removeAxiom" text="Remove Axiom">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="A" control="UP" meta="DOWN" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" onAction="#addDefault" text="Add Default" />
-                  <MenuItem mnemonicParsing="false" onAction="#removeDefault" text="Remove Default" />
+                  <MenuItem mnemonicParsing="false" onAction="#addDefault" text="Add Default">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="D" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#removeDefault" text="Remove Default">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="D" control="UP" meta="DOWN" shift="DOWN" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
         </menus>

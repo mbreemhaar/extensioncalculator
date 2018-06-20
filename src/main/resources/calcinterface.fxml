@@ -13,6 +13,8 @@
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#recalculate" text="Recalculate Extensions" />
                   <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#clear" text="Clear" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" onAction="#addAxiom" text="Add Axiom" />
                   <MenuItem mnemonicParsing="false" onAction="#removeAxiom" text="Remove Axiom" />
                   <SeparatorMenuItem mnemonicParsing="false" />

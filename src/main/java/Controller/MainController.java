@@ -65,6 +65,13 @@ public class MainController {
 
     }
 
+    @FXML
+    private void clear() {
+        axiomListView.getItems().clear();
+        defaultListView.getItems().clear();
+        this.recalculate();
+    }
+
     private TreeItem<Extension> buildTreeView(Extension extension, TreeItem<Extension> parent) {
         TreeItem<Extension> item = new TreeItem<Extension>(extension);
         item.setExpanded(true);

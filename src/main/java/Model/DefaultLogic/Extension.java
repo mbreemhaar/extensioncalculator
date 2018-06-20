@@ -65,6 +65,21 @@ public class Extension {
         return true;
     }
 
+    public boolean isSuccessful() {
+        if (inSetBase.isEmpty() || outSetBase.isEmpty()) {
+            return true;
+        }
+
+        for (Formula f : outSetBase) {
+            if (f.isInSet(inSetBase)) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
     @Override
     public String toString() {
         if (process.size() != 0) {
@@ -86,6 +101,13 @@ public class Extension {
         } else {
             s.append("Complete: no\n");
         }
+
+        if (isSuccessful()) {
+            s.append("Successful: yes\n");
+        } else {
+            s.append("Successful: no\n");
+        }
+
         s.append("In-set: " + inSetBase + "\n");
         s.append("Out-set: " + outSetBase + "\n");
         return s.toString();

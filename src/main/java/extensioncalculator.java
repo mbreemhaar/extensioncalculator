@@ -18,6 +18,7 @@ public class extensioncalculator extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("calcinterface.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Default Logic Extension Calculator");
+        primaryStage.setResizable(false);
         new DefaultTheory();
         primaryStage.show();
     }

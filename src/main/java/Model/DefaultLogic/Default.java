@@ -28,7 +28,7 @@ public class Default {
 
     @Override
     public String toString() {
-        return prerequisite + ", " + justification + " > " + consequence;
+        return prerequisite + " : " + justification + " / " + consequence;
     }
 
     public Formula getPrerequisite() {

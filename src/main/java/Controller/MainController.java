@@ -20,7 +20,15 @@ public class MainController {
 
     public void initialize() {
         Utility.mainController = this;
+
+        final String os = System.getProperty("os.name");
+        if (os != null && os.startsWith("Mac"))
+            menuBar.useSystemMenuBarProperty().set(true);
+
     }
+
+    @FXML
+    private MenuBar menuBar;
 
     @FXML
     private Label detailsLabel;

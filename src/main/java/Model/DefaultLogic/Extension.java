@@ -28,13 +28,18 @@ public class Extension {
         newDefaults.remove(d);
 
         HashSet<Formula> newInSetBase = (HashSet<Formula>)inSetBase.clone();
-        newInSetBase.add(d.getConsequence());
+        Formula consequence = d.getConsequence();
+        if (!consequence.isInSet(newInSetBase)) {
+            newInSetBase.add(consequence);
+        }
 
         HashSet<Formula> newOutSetBase = (HashSet<Formula>)outSetBase.clone();
 
-
         for(Formula f : d.getJustification()) {
-            newOutSetBase.add(new Negation(f));
+            Negation neg = new Negation(f);
+            if (!neg.isInSet(newOutSetBase)) {
+                newOutSetBase.add(new Negation(f));
+            }
         }
 
         ArrayList<Default> newProcess = (ArrayList<Default>)process.clone();

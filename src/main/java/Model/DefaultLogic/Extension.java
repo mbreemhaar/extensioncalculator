@@ -66,6 +66,10 @@ public class Extension {
     }
 
     public boolean isSuccessful() {
+        if (!Formula.isConsistent(inSetBase)) {
+            return false;
+        }
+
         if (inSetBase.isEmpty() || outSetBase.isEmpty()) {
             return true;
         }

@@ -25,7 +25,7 @@ public class Conjunction extends Formula {
         } else if (set.size() > 2) {
             this.clause1 = set.get(0);
             set.remove(0);
-            this.clause2 = new Conjunction(new HashSet<Formula>(set));
+            this.clause2 = new Conjunction(new HashSet<>(set));
         } else if (set.size() == 1) {
             this.clause1 = set.get(0);
             this.clause2 = set.get(0);

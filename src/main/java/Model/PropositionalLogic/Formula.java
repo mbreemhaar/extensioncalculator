@@ -62,6 +62,16 @@ public abstract class Formula {
         return conj.isSatisfiable();
     }
 
+    public static boolean isConsistent(HashSet<Formula> set) {
+        if (set.isEmpty()) {
+            return true;
+        }
+
+        Conjunction c = new Conjunction(set);
+
+        return c.isSatisfiable();
+    }
+
     //TODO Still checks for individual formula consistency but not for all together. See example in isInSet()
     public Boolean isConsistentWith(HashSet<Formula> set) {
         for(Formula f : set) {

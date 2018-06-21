@@ -60,7 +60,7 @@ public class Extension {
         }
     }
 
-    public boolean isComplete() {
+    public boolean isClosed() {
         for(Default d : remainingDefaults) {
             if (d.isApplicable(inSetBase)) {
                 return false;
@@ -104,10 +104,10 @@ public class Extension {
     public String getDetailsString() {
         StringBuilder s = new StringBuilder();
         s.append("Process: " + process + "\n");
-        if (isComplete()) {
-            s.append("Complete: yes\n");
+        if (isClosed()) {
+            s.append("Closed: yes\n");
         } else {
-            s.append("Complete: no\n");
+            s.append("Closed: no\n");
         }
 
         if (isSuccessful()) {

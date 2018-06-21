@@ -11,17 +11,22 @@ import java.util.Set;
 
 public class Default {
     private Formula prerequisite;
-    private Formula justification;
+    private Set<Formula> justification;
     private Formula consequence;
 
-    public Default(Formula prerequisite, Formula justification, Formula consequence) {
+    public Default(Formula prerequisite, Set<Formula> justification, Formula consequence) {
         this.prerequisite = prerequisite;
         this.justification = justification;
         this.consequence = consequence;
     }
 
     public Boolean isApplicable(HashSet<Formula> inSetBase) {
-        if ((prerequisite.isInSet(inSetBase) || prerequisite.isTautology()) && justification.isConsistentWith(inSetBase)) {
+        if ((prerequisite.isInSet(inSetBase) || prerequisite.isTautology())) {
+            for(Formula f : justification) {
+                if (!f.isConsistentWith(inSetBase)) {
+                    return false;
+                }
+            }
             return true;
         } else return false;
     }
@@ -35,7 +40,7 @@ public class Default {
         return prerequisite;
     }
 
-    public Formula getJustification() {
+    public Set<Formula> getJustification() {
         return justification;
     }
 

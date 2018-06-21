@@ -10,6 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class NewDefaultController {
     @FXML
     private TextField prereqTextField;
@@ -24,11 +27,24 @@ public class NewDefaultController {
     @FXML
     private void add() {
         Formula prereq = FParser.parse(prereqTextField.getText());
-        Formula just = FParser.parse(justTextField.getText());
         Formula cons = FParser.parse(consTextField.getText());
 
-        if (prereq != null && prereq.isValid() && just != null && just.isValid() && cons != null && cons.isValid()) {
-            Default d = new Default(prereq,just,cons);
+        Set<Formula> justifications = new HashSet<>();
+        String justStrings[] = justTextField.getText().split(",");
+
+        for(String s : justStrings) {
+            justifications.add(FParser.parse(s));
+        }
+
+        if (prereq != null && prereq.isValid() && cons != null && cons.isValid()) {
+            for (Formula f : justifications) {
+                if (!(f != null && f.isValid())) {
+                    Utility.invalidFormulaAlert();
+                    return;
+                }
+            }
+
+            Default d = new Default(prereq,justifications,cons);
             Utility.theory.add(d);
             this.close();
         } else {

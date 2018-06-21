@@ -31,7 +31,11 @@ public class Extension {
         newInSetBase.add(d.getConsequence());
 
         HashSet<Formula> newOutSetBase = (HashSet<Formula>)outSetBase.clone();
-        newOutSetBase.add(new Negation(d.getJustification()));
+
+
+        for(Formula f : d.getJustification()) {
+            newOutSetBase.add(new Negation(f));
+        }
 
         ArrayList<Default> newProcess = (ArrayList<Default>)process.clone();
         newProcess.add(d);

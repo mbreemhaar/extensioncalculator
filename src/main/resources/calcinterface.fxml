@@ -55,11 +55,7 @@
       </VBox>
    </right>
    <bottom>
-      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Default Logic Extension Calculator v0.1" />
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER" />
    </bottom>
    <left>
       <TreeView fx:id="processTreeView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />

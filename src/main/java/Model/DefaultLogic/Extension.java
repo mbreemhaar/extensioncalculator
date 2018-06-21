@@ -36,9 +36,15 @@ public class Extension {
         HashSet<Formula> newOutSetBase = (HashSet<Formula>)outSetBase.clone();
 
         for(Formula f : d.getJustification()) {
-            Negation neg = new Negation(f);
+            Formula neg;
+            if (f.getClass() == Negation.class) {
+                neg = f.getElements().get(0);
+            } else {
+                neg = new Negation(f);
+            }
+
             if (!neg.isInSet(newOutSetBase)) {
-                newOutSetBase.add(new Negation(f));
+                newOutSetBase.add(neg);
             }
         }
 

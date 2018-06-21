@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/extensioncalculator.iml" filepath="$PROJECT_DIR$/extensioncalculator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExtensionCalculator.iml" filepath="$PROJECT_DIR$/ExtensionCalculator.iml" />
     </modules>
   </component>
 </project>

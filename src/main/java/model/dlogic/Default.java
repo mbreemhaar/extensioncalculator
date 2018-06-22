@@ -21,7 +21,7 @@ public class Default {
     }
 
     public Boolean isApplicable(HashSet<Formula> inSetBase) {
-        if ((prerequisite.isInSet(inSetBase) || prerequisite.isTautology())) {
+        if ((prerequisite == null || prerequisite.isInSet(inSetBase) || prerequisite.isTautology())) {
             for(Formula f : justification) {
                 if (!f.isConsistentWith(inSetBase)) {
                     return false;
@@ -33,7 +33,11 @@ public class Default {
 
     @Override
     public String toString() {
-        return prerequisite + " : " + justification + " / " + consequence;
+        if (prerequisite != null) {
+            return prerequisite + " : " + justification + " / " + consequence;
+        } else {
+            return "true : " + justification + " / " + consequence;
+        }
     }
 
     public Formula getPrerequisite() {

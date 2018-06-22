@@ -25,7 +25,15 @@ public class NewDefaultController {
 
     @FXML
     private void add() {
-        Formula prereq = FParser.parse(prereqTextField.getText());
+        Formula prereq;
+
+        if (!prereqTextField.getText().isEmpty()) {
+            prereq = FParser.parse(prereqTextField.getText());
+        } else {
+            prereq = null;
+        }
+
+
         Formula cons = FParser.parse(consTextField.getText());
 
         Set<Formula> justifications = new HashSet<>();
@@ -35,7 +43,7 @@ public class NewDefaultController {
             justifications.add(FParser.parse(s));
         }
 
-        if (prereq != null && prereq.isValid() && cons != null && cons.isValid()) {
+        if ((prereq == null || prereq.isValid()) && cons != null && cons.isValid()) {
             for (Formula f : justifications) {
                 if (!(f != null && f.isValid())) {
                     Utility.invalidFormulaAlert();

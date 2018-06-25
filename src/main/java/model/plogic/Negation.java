@@ -34,7 +34,7 @@ public class Negation extends Formula {
             return new Conjunction(new Negation(elements.get(0)),new Negation(elements.get(1))).toCNF();
         } else if (formula.getClass() == Conjunction.class) {
             ArrayList<Formula> elements = formula.getElements();
-            return new Conjunction(new Negation(elements.get(0)),new Negation(elements.get(1))).toCNF();
+            return new Disjunction(new Negation(elements.get(0)),new Negation(elements.get(1))).toCNF();
         } else {
             return this;
         }

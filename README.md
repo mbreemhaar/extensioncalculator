@@ -21,10 +21,6 @@ a & b   \\Conjunction
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/) - Programming Environment
 
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Authors
 
 * **Marco Breemhaar** - *Initial work* - [mbreemhaar](https://github.com/mbreemhaar)

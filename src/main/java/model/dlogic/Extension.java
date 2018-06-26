@@ -143,9 +143,9 @@ public class Extension {
         }
 
         if (Formula.isConsistent(outSetBase)) {
-            s.append("In-set: " + outSetBase + "\n");
+            s.append("Out-set: " + outSetBase + "\n");
         } else {
-            s.append("In-set: ⊥\n");
+            s.append("Out-set: ⊥\n");
         }
         return s.toString();
     }

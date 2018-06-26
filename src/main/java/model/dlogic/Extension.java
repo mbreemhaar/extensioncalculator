@@ -101,10 +101,19 @@ public class Extension {
 
     @Override
     public String toString() {
-        if (process.size() != 0) {
-            return process.get(process.size()-1).toString() + "\n" + inSetBase.toString();
+        if (!process.isEmpty()) {
+            if (Formula.isConsistent(inSetBase)) {
+                return process.get(process.size()-1).toString() + "\n" + inSetBase.toString();
+            } else {
+                return process.get(process.size()-1).toString() + "\n" + "⊥";
+            }
+
         } else {
-            return inSetBase.toString();
+            if (Formula.isConsistent(inSetBase)) {
+                return inSetBase.toString();
+            } else {
+                return "⊥";
+            }
         }
     }
 
@@ -127,8 +136,17 @@ public class Extension {
             s.append("Successful: no\n");
         }
 
-        s.append("In-set: " + inSetBase + "\n");
-        s.append("Out-set: " + outSetBase + "\n");
+        if (Formula.isConsistent(inSetBase)) {
+            s.append("In-set: " + inSetBase + "\n");
+        } else {
+            s.append("In-set: ⊥\n");
+        }
+
+        if (Formula.isConsistent(outSetBase)) {
+            s.append("In-set: " + outSetBase + "\n");
+        } else {
+            s.append("In-set: ⊥\n");
+        }
         return s.toString();
     }
 }

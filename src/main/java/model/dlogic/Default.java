@@ -21,6 +21,10 @@ public class Default {
     }
 
     public Boolean isApplicable(HashSet<Formula> inSetBase) {
+        if (!Formula.isConsistent(inSetBase)) {
+            return false;
+        }
+
         if ((prerequisite == null || prerequisite.isInSet(inSetBase) || prerequisite.isTautology())) {
             for(Formula f : justification) {
                 if (!f.isConsistentWith(inSetBase)) {

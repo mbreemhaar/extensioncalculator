@@ -36,8 +36,12 @@ public class DefaultTheory {
     }
 
     public Extension buildProcessTree() {
+        long startTime = System.nanoTime();
         Extension top = new Extension(new HashSet<>(new ArrayList<>(defaults)), new HashSet<>(new ArrayList<>(axioms)), new HashSet<>(), new ArrayList<>());
         top.buildProcessTree();
+        long endTime = System.nanoTime();
+        long totalTime = (endTime - startTime) / 1000;
+        System.out.println("Process tree built in " + totalTime + " mircoseconds");
         return top;
     }
 }

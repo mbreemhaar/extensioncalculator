@@ -15,7 +15,7 @@ public class Negation extends Formula {
 
     @Override
     public ArrayList<Formula> getElements() {
-        ArrayList<Formula> list = new ArrayList<Formula>();
+        ArrayList<Formula> list = new ArrayList<>();
         list.add(formula);
         return list;
     }

@@ -43,7 +43,7 @@ public class Atom extends Formula {
     private Integer makeValue() {
         double value = 0;
         for(int i = 0; i < name.length(); i++) {
-            value += (name.charAt(i) - 97) * Math.pow(26,i);
+            value += (name.charAt(i) - 96) * Math.pow(27,i);
         }
         return (int)value;
     }

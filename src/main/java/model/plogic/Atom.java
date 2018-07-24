@@ -10,10 +10,12 @@ import java.util.ArrayList;
 
 public class Atom extends Formula {
 
-    private String name;
+    private final String name;
+    private final Integer value;
 
     public Atom(String name) {
         this.name = name;
+        this.value = makeValue();
     }
 
     @Override
@@ -38,11 +40,15 @@ public class Atom extends Formula {
         return name;
     }
 
-    public Integer getValue() {
+    private Integer makeValue() {
         double value = 0;
         for(int i = 0; i < name.length(); i++) {
             value += (name.charAt(i) - 97) * Math.pow(26,i);
         }
         return (int)value;
+    }
+
+    public Integer getValue() {
+        return value;
     }
 }

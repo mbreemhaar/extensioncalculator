@@ -18,7 +18,7 @@ formula
 fragment LOWERCASE		: [a-z] ;
 fragment UPPERCASE		: [A-Z] ;
 
-ATOM					: (LOWERCASE | UPPERCASE) ;
+ATOM					: (LOWERCASE | UPPERCASE)+ ;
 CONJ                    : '&' ;
 DISJ                    : '|' ;
 NEG                     : '!' ;

@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 public class Atom extends Formula {
 
-    private Character name;
+    private String name;
 
     public Atom(String name) {
-        this.name = name.charAt(0);
+        this.name = name;
     }
 
     @Override
@@ -35,10 +35,14 @@ public class Atom extends Formula {
 
     @Override
     public String toString() {
-        return Character.toString(name);
+        return name;
     }
 
     public Integer getValue() {
-        return Character.getNumericValue(name);
+        double value = 0;
+        for(int i = 0; i < name.length(); i++) {
+            value += (name.charAt(i) - 97) * Math.pow(26,i);
+        }
+        return (int)value;
     }
 }

@@ -32,7 +32,7 @@ public class FormulaLexer extends Lexer {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'('", "')'", null, "'&'", "'|'", "'!'"
+		null, "'('", "')'", null, "'&'", "'|'", "'~'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, "ATOM", "CONJ", "DISJ", "NEG", "WS"
@@ -106,9 +106,9 @@ public class FormulaLexer extends Lexer {
 		"\3\2\2\2\27\30\7+\2\2\30\6\3\2\2\2\31\32\t\2\2\2\32\b\3\2\2\2\33\34\t"+
 		"\3\2\2\34\n\3\2\2\2\35 \5\7\4\2\36 \5\t\5\2\37\35\3\2\2\2\37\36\3\2\2"+
 		"\2 !\3\2\2\2!\37\3\2\2\2!\"\3\2\2\2\"\f\3\2\2\2#$\7(\2\2$\16\3\2\2\2%"+
-		"&\7~\2\2&\20\3\2\2\2\'(\7#\2\2(\22\3\2\2\2)+\t\4\2\2*)\3\2\2\2+,\3\2\2"+
-		"\2,*\3\2\2\2,-\3\2\2\2-.\3\2\2\2./\b\n\2\2/\24\3\2\2\2\6\2\37!,\3\b\2"+
-		"\2";
+		"&\7~\2\2&\20\3\2\2\2\'(\7\u0080\2\2(\22\3\2\2\2)+\t\4\2\2*)\3\2\2\2+,"+
+		"\3\2\2\2,*\3\2\2\2,-\3\2\2\2-.\3\2\2\2./\b\n\2\2/\24\3\2\2\2\6\2\37!,"+
+		"\3\b\2\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

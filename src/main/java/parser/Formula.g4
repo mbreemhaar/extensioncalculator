@@ -21,5 +21,5 @@ fragment UPPERCASE		: [A-Z] ;
 ATOM					: (LOWERCASE | UPPERCASE)+ ;
 CONJ                    : '&' ;
 DISJ                    : '|' ;
-NEG                     : '!' ;
+NEG                     : '~' ;
 WS         				: [ \r\t\u000C\n]+ -> skip;

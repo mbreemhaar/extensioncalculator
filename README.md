@@ -11,7 +11,7 @@ Inside the program logical formulas can be used. The syntax for these formulas i
 ```a       \\Propositional atom
 a | b   \\Disjunction
 a & b   \\Conjunction
-!a      \\Negation
+~a      \\Negation
 ```
 
 ## Built With

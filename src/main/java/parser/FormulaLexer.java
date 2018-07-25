@@ -1,13 +1,10 @@
-// Generated from /Users/marco/ai/bscproj/extensioncalculator/src/main/java/parser/Formula.g4 by ANTLR 4.7
+// Generated from /Users/marco/ai/bscproj/ExtensionCalculator/src/main/java/parser/Formula.g4 by ANTLR 4.7
 package parser;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class FormulaLexer extends Lexer {
@@ -32,7 +29,7 @@ public class FormulaLexer extends Lexer {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'('", "')'", null, "'&'", "'|'", "'~'"
+		null, "'('", "')'", null, "'&'", "'|'", "'!'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, "ATOM", "CONJ", "DISJ", "NEG", "WS"
@@ -105,9 +102,9 @@ public class FormulaLexer extends Lexer {
 		"\2\17#\3\2\2\2\21%\3\2\2\2\23(\3\2\2\2\25\26\7*\2\2\26\4\3\2\2\2\27\30"+
 		"\7+\2\2\30\6\3\2\2\2\31\32\t\2\2\2\32\b\3\2\2\2\33\34\t\3\2\2\34\n\3\2"+
 		"\2\2\35 \5\7\4\2\36 \5\t\5\2\37\35\3\2\2\2\37\36\3\2\2\2 \f\3\2\2\2!\""+
-		"\7(\2\2\"\16\3\2\2\2#$\7~\2\2$\20\3\2\2\2%&\7\u0080\2\2&\22\3\2\2\2\'"+
-		")\t\4\2\2(\'\3\2\2\2)*\3\2\2\2*(\3\2\2\2*+\3\2\2\2+,\3\2\2\2,-\b\n\2\2"+
-		"-\24\3\2\2\2\5\2\37*\3\b\2\2";
+		"\7(\2\2\"\16\3\2\2\2#$\7~\2\2$\20\3\2\2\2%&\7#\2\2&\22\3\2\2\2\')\t\4"+
+		"\2\2(\'\3\2\2\2)*\3\2\2\2*(\3\2\2\2*+\3\2\2\2+,\3\2\2\2,-\b\n\2\2-\24"+
+		"\3\2\2\2\5\2\37*\3\b\2\2";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

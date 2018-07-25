@@ -42,7 +42,7 @@ public class Negation extends Formula {
 
     @Override
     public String toString() {
-        return "~" + formula + ")";
+        return "!(" + formula + ")";
     }
 
     @Override

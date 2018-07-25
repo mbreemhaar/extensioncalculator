@@ -1,4 +1,4 @@
-// Generated from /Users/marco/ai/bscproj/extensioncalculator/src/main/java/parser/Formula.g4 by ANTLR 4.7
+// Generated from /Users/marco/ai/bscproj/ExtensionCalculator/src/main/java/parser/Formula.g4 by ANTLR 4.7
 package parser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 

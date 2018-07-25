@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import model.dlogic.Default;
 import model.dlogic.Extension;
 import model.plogic.Formula;
@@ -9,6 +11,8 @@ import view.NewDefaultView;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.io.File;
 
 public class MainController {
 
@@ -72,6 +76,14 @@ public class MainController {
         axiomListView.getItems().clear();
         defaultListView.getItems().clear();
         this.recalculate();
+    }
+
+    @FXML
+    private void loadFile() {
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Load a default theory");
+        File file = fc.showOpenDialog(new Stage());
+        Utility.loadTheory(file);
     }
 
     private TreeItem<Extension> buildTreeView(Extension extension, TreeItem<Extension> parent) {

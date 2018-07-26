@@ -12,10 +12,18 @@ public class Atom extends Formula {
 
     private final String name;
     private final Integer value;
+    private static ArrayList<String> valueIndex = new ArrayList<>();
 
     public Atom(String name) {
         this.name = name;
-        this.value = makeValue();
+        this.value = assignValue(name);
+    }
+
+    private Integer assignValue(String name) {
+        if(!valueIndex.contains(name)) {
+            valueIndex.add(name);
+        }
+        return valueIndex.indexOf(name) + 1;
     }
 
     @Override
@@ -38,14 +46,6 @@ public class Atom extends Formula {
     @Override
     public String toString() {
         return name;
-    }
-
-    private Integer makeValue() {
-        double value = 0;
-        for(int i = 0; i < name.length(); i++) {
-            value += (name.charAt(i) - 96) * Math.pow(27,i);
-        }
-        return (int)value;
     }
 
     public Integer getValue() {

@@ -2,7 +2,9 @@ package utility;
 
 import controller.MainController;
 import javafx.scene.control.Alert;
+import model.dlogic.Default;
 import model.dlogic.DefaultTheory;
+import model.plogic.Formula;
 import parser.FParser;
 import parser.FormulaParser;
 
@@ -29,23 +31,23 @@ public class Utility {
 
     public static void loadTheory(File file) {
         try {
-            Scanner s = new Scanner(file);
+            try (Scanner s = new Scanner(file)) {
 
-            while(s.hasNextLine()) {
-                String line = s.nextLine();
-                String regex = "(?<default>[a-z&|~()]+:[a-z&|~(),]+/[a-z&|~()]+).|(?<formula>[a-z&|~()]+).";
+                while (s.hasNextLine()) {
+                    String line = s.nextLine();
+                    String regex = "(?<default>[a-z&|~()]?+:[a-z&|~(),]+/[a-z&|~()]+).|(?<formula>[a-z&|~()]+).";
 
-                Pattern pattern = Pattern.compile(regex);
-                Matcher matcher = pattern.matcher(line);
+                    Pattern pattern = Pattern.compile(regex);
+                    Matcher matcher = pattern.matcher(line);
 
-                if(matcher.matches() && matcher.group("formula") != null) {
-                    theory.add(FParser.parse(matcher.group("formula")));
-                } else if (matcher.matches() && matcher.group("default") != null) {
+                    if (matcher.matches() && matcher.group("formula") != null) {
+                        theory.add(FParser.parse(matcher.group("formula")));
+                    } else if (matcher.matches() && matcher.group("default") != null) {
+                        theory.add(new Default(matcher.group("default")));
+                    }
+
                 }
-
             }
-
-            s.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package model.dlogic;
 
 import model.plogic.Formula;
+import parser.FParser;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,25 @@ public class Default {
         this.prerequisite = prerequisite;
         this.justification = justification;
         this.consequence = consequence;
+    }
+
+    public Default(String string) {
+        String[] split = string.split("[:/]");
+
+        if (!split[0].isEmpty()) {
+            this.prerequisite = FParser.parse(split[0]);
+        } else {
+            this.prerequisite = null;
+        }
+
+        this.justification = new HashSet<>();
+        this.consequence = FParser.parse(split[2]);
+
+        String justStrings[] = split[1].split(",");
+
+        for(String s : justStrings) {
+            this.justification.add(FParser.parse(s));
+        }
     }
 
     public Boolean isApplicable(HashSet<Formula> inSetBase) {

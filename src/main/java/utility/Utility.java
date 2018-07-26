@@ -35,7 +35,7 @@ public class Utility {
 
                 while (s.hasNextLine()) {
                     String line = s.nextLine();
-                    String regex = "(?<default>[a-z&|~()]?+:[a-z&|~(),]+/[a-z&|~()]+).|(?<formula>[a-z&|~()]+).";
+                    String regex = "(?<default>([a-z&|~()]+)?:[a-z&|~(),]+/[a-z&|~()]+).|(?<formula>[a-z&|~()]+).";
 
                     Pattern pattern = Pattern.compile(regex);
                     Matcher matcher = pattern.matcher(line);

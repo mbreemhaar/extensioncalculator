@@ -1,10 +1,16 @@
 package utility;
 
 import controller.MainController;
-import model.dlogic.DefaultTheory;
 import javafx.scene.control.Alert;
+import model.dlogic.DefaultTheory;
+import parser.FParser;
+import parser.FormulaParser;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Utility {
     public static DefaultTheory theory;
@@ -22,7 +28,26 @@ public class Utility {
     }
 
     public static void loadTheory(File file) {
-        System.out.println("Loading file: " + file);
-        return;
+        try {
+            Scanner s = new Scanner(file);
+
+            while(s.hasNextLine()) {
+                String line = s.nextLine();
+                String regex = "(?<default>[a-z&|~()]+:[a-z&|~(),]+/[a-z&|~()]+).|(?<formula>[a-z&|~()]+).";
+
+                Pattern pattern = Pattern.compile(regex);
+                Matcher matcher = pattern.matcher(line);
+
+                if(matcher.matches() && matcher.group("formula") != null) {
+                    theory.add(FParser.parse(matcher.group("formula")));
+                } else if (matcher.matches() && matcher.group("default") != null) {
+                }
+
+            }
+
+            s.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

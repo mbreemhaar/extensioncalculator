@@ -72,8 +72,9 @@ public abstract class Formula {
     }
 
     public Boolean isConsistentWith(HashSet<Formula> set) {
+        Formula conj = new Conjunction(set);
         for(Formula f : set) {
-            if (!f.isConsistentWith(this)) {
+            if (!conj.isConsistentWith(this)) {
                 return false;
             }
         }

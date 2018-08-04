@@ -55,6 +55,15 @@ public class Default {
         } else return false;
     }
 
+    public Boolean isConsistent(HashSet<Formula> inSetBase) {
+        for(Formula f : justification) {
+            if (!f.isConsistentWith(inSetBase)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         if (prerequisite != null) {

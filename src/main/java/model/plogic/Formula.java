@@ -41,6 +41,10 @@ public abstract class Formula {
     }
 
     public Boolean isInSet(HashSet<Formula> setBase) {
+        if (this.isTautology()) {
+            return true;
+        }
+
         if (setBase.isEmpty()) {
             return false;
         }
@@ -72,6 +76,9 @@ public abstract class Formula {
     }
 
     public Boolean isConsistentWith(HashSet<Formula> set) {
+        if (this.isTautology()) {
+            return true;
+        }
         Formula conj = new Conjunction(set);
         for(Formula f : set) {
             if (!conj.isConsistentWith(this)) {

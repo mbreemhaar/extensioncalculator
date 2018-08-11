@@ -45,7 +45,7 @@ public class Default {
             return false;
         }
 
-        if ((prerequisite == null || prerequisite.isInSet(inSetBase) || prerequisite.isTautology())) {
+        if ((prerequisite == null || prerequisite.isInSet(inSetBase))) {
             for(Formula f : justification) {
                 if (!f.isConsistentWith(inSetBase)) {
                     return false;

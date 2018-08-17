@@ -14,7 +14,6 @@ public class Extension {
     private HashSet<Formula> outSetBase;
     private HashSet<Extension> children = new HashSet<>();
     private ArrayList<Default> process = new ArrayList<>();
-    private static int found = 0;
 
     public Extension(HashSet<Default> remainingDefaults, HashSet<Formula> inSetBase, HashSet<Formula> outSetBase, ArrayList<Default> process) {
         this.remainingDefaults = remainingDefaults;
@@ -87,10 +86,6 @@ public class Extension {
             if (d.isApplicable(inSetBase)) {
                 return false;
             }
-        }
-        if(this.isSuccessful()) {
-            found++;
-            System.out.println("I found extension number " +found+ "!");
         }
         return true;
     }

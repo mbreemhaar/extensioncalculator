@@ -152,11 +152,7 @@ public class Extension {
             s.append("In-set: ⊥\n");
         }
 
-        if (Formula.isConsistent(outSetBase)) {
-            s.append("Out-set: " + outSetBase + "\n");
-        } else {
-            s.append("Out-set: ⊥\n");
-        }
+        s.append("Out-set: " + outSetBase + "\n");
         return s.toString();
     }
 }

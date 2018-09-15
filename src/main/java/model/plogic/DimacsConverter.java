@@ -28,8 +28,6 @@ public class DimacsConverter {
             return combine(convert(clause1), convert(clause2));
 
         } else if (cnfFormula.getClass() == Disjunction.class) {
-            Formula clause1 = cnfFormula.getElements().get(0);
-            Formula clause2 = cnfFormula.getElements().get(1);
 
             Vec<VecInt> vector = new Vec<>();
             vector.push(convertDisjunction(cnfFormula));

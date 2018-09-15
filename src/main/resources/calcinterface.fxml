@@ -10,6 +10,11 @@
    <top>
       <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
         <menus>
+            <Menu mnemonicParsing="false" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#loadFile" text="Load..." />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Theory">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#recalculate" text="Recalculate Extensions">

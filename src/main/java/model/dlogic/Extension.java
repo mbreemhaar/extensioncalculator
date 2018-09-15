@@ -5,6 +5,7 @@ import model.plogic.Negation;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 public class Extension {
 
@@ -56,6 +57,15 @@ public class Extension {
     }
 
     public void applyAllDefaults() {
+        Set<Default> inconsistentDefaults = new HashSet<>();
+        for(Default d : remainingDefaults) {
+            if(!d.isConsistent(inSetBase)) {
+                inconsistentDefaults.add(d);
+            }
+        }
+
+        remainingDefaults.removeAll(inconsistentDefaults);
+
         for(Default d : remainingDefaults) {
             if(d.isApplicable(inSetBase)) {
                 applyDefault(d);
@@ -142,11 +152,7 @@ public class Extension {
             s.append("In-set: ⊥\n");
         }
 
-        if (Formula.isConsistent(outSetBase)) {
-            s.append("Out-set: " + outSetBase + "\n");
-        } else {
-            s.append("Out-set: ⊥\n");
-        }
+        s.append("Out-set: " + outSetBase + "\n");
         return s.toString();
     }
 }

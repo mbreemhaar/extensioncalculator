@@ -41,6 +41,10 @@ public abstract class Formula {
     }
 
     public Boolean isInSet(HashSet<Formula> setBase) {
+        if (this.isTautology()) {
+            return true;
+        }
+
         if (setBase.isEmpty()) {
             return false;
         }
@@ -71,10 +75,13 @@ public abstract class Formula {
         return c.isSatisfiable();
     }
 
-    //TODO Still checks for individual formula consistency but not for all together. See example in isInSet()
     public Boolean isConsistentWith(HashSet<Formula> set) {
+        if (this.isTautology()) {
+            return true;
+        }
+        Formula conj = new Conjunction(set);
         for(Formula f : set) {
-            if (!f.isConsistentWith(this)) {
+            if (!conj.isConsistentWith(this)) {
                 return false;
             }
         }

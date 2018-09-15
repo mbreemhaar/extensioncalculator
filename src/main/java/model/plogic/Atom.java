@@ -10,10 +10,20 @@ import java.util.ArrayList;
 
 public class Atom extends Formula {
 
-    private Character name;
+    private final String name;
+    private final Integer value;
+    private static ArrayList<String> valueIndex = new ArrayList<>();
 
     public Atom(String name) {
-        this.name = name.charAt(0);
+        this.name = name;
+        this.value = assignValue(name);
+    }
+
+    private Integer assignValue(String name) {
+        if(!valueIndex.contains(name)) {
+            valueIndex.add(name);
+        }
+        return valueIndex.indexOf(name) + 1;
     }
 
     @Override
@@ -35,10 +45,10 @@ public class Atom extends Formula {
 
     @Override
     public String toString() {
-        return Character.toString(name);
+        return name;
     }
 
     public Integer getValue() {
-        return Character.getNumericValue(name);
+        return value;
     }
 }
